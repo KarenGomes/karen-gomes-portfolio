@@ -17,7 +17,7 @@ export function Navbar() {
           <div className="w-8 h-8 bg-[#7C3AED] rounded-lg flex items-center justify-center">
             <Code size={18} className="text-white" />
           </div>
-          <span className="font-bold text-lg hidden sm:block">Karen.dev</span>
+          <span className="font-bold text-lg hidden sm:block">Karen Gomes</span>
         </div>
 
         <div className="flex items-center gap-6">

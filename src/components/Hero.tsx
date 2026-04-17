@@ -2,6 +2,8 @@ import { Download, Github } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
 import { useTypewriter } from '../hooks/useTypewriter'
 import { Button } from './ui/Button'
+import karenIcon from '../assets/images/karen-icon.png'
+import cvPdf from '../assets/docs/Karen Gomes - Analista e Desenvolvedora De Sistemas.pdf'
 
 const FULL_TEXT =
   'Sou desenvolvedora Full Stack Júnior e UI/UX designer. Especialista em Angular, React e integração de IA Generativa em produtos digitais.'
@@ -49,10 +51,17 @@ export function Hero() {
                 <span className="animate-pulse">|</span>
               </p>
               <div className="flex gap-4 pt-4">
-                <Button className="px-5 py-2.5" type="button">
-                  <Download size={16} />
-                  Download CV
-                </Button>
+                <a
+                  href={cvPdf}
+                  download="Karen_Gomes_CV.pdf"
+                  className="inline-flex"
+                  aria-label="Baixar currículo em PDF"
+                >
+                  <Button className="px-5 py-2.5" type="button">
+                    <Download size={16} />
+                    Download CV
+                  </Button>
+                </a>
 
                 <a
                   href="https://github.com/KarenGomes"
@@ -76,18 +85,21 @@ export function Hero() {
                 isDarkMode ? 'border-[#7C3AED]/30' : 'border-purple-200'
               }`}
             ></div>
-            <div
-              className={`relative w-full h-full rounded-3xl overflow-hidden border-4 shadow-xl ${
-                isDarkMode ? 'border-[#161618]' : 'border-white'
-              }`}
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#7C3AED] to-[#C084FC] flex items-center justify-center overflow-hidden">
-                <div className="text-white text-center p-8">
-                  <p className="text-lg font-bold">Karen Gomes</p>
-                  <p className="text-xs opacity-80">
-                    Full Stack Dev &amp; Designer
-                  </p>
-                </div>
+            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#7C3AED] to-[#C084FC] p-[3px] rounded-3xl"></div>
+              <div
+                className={`relative w-full h-full rounded-3xl overflow-hidden border-4 ${
+                  isDarkMode ? 'border-[#0A0A0A]' : 'border-white'
+                }`}
+              >
+                <img
+                  src={karenIcon}
+                  alt="Foto de Karen Gomes"
+                  className="w-full h-full object-cover object-center scale-[1.03] transition-transform duration-500 hover:scale-[1.06]"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
               </div>
             </div>
           </div>

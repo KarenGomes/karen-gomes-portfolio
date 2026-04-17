@@ -18,7 +18,7 @@ export function Footer() {
             </div>
             <span className="font-bold">Karen Gomes</span>
           </div>
-          <p className="text-xs opacity-50">© 2026 Built with React &amp; Tailwind</p>
+          <p className="text-xs opacity-50">© 2026 Built with React, Tailwind &amp; AWS Lambda (DynamoDB)</p>
         </div>
 
         <div className="flex flex-col items-center gap-6">
