@@ -1,8 +1,21 @@
 import { Code, Github, Linkedin, Mail } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { getContactConfig } from '../config/contact'
 import { useTheme } from '../hooks/useTheme'
+import { ContactModal } from './ContactModal'
+import { Toast } from './ui/Toast'
 
 export function Footer() {
   const { isDarkMode } = useTheme()
+  const [contactOpen, setContactOpen] = useState(false)
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+  const { linkedinProfileUrl } = getContactConfig()
+
+  useEffect(() => {
+    if (!toastMessage) return
+    const id = window.setTimeout(() => setToastMessage(null), 4000)
+    return () => window.clearTimeout(id)
+  }, [toastMessage])
 
   return (
     <footer
@@ -18,30 +31,35 @@ export function Footer() {
             </div>
             <span className="font-bold">Karen Gomes</span>
           </div>
-          <p className="text-xs opacity-50">© 2026 Built with React, Tailwind &amp; AWS Lambda (DynamoDB)</p>
+          <p className="text-xs opacity-50 max-w-[14rem]">© 2026 Built with React, Tailwind &amp; AWS Lambda (DynamoDB)</p>
         </div>
 
         <div className="flex flex-col items-center gap-6">
           <h3 className="text-xl font-bold">Vamos construir algo juntos?</h3>
           <div className="flex gap-4">
-            <a
-              href="https://www.linkedin.com/in/karen-sgomes"
-              target="_blank"
-              rel="noopener noreferrer"
+            {linkedinProfileUrl ? (
+              <a
+                href={linkedinProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-3 rounded-xl border transition-all hover:bg-[#7C3AED] hover:text-white ${
+                  isDarkMode ? 'border-[#27272A]' : 'border-zinc-200'
+                }`}
+              >
+                <Linkedin size={20} />
+              </a>
+            ) : null}
+            <button
+              type="button"
+              onClick={() => setContactOpen(true)}
               className={`p-3 rounded-xl border transition-all hover:bg-[#7C3AED] hover:text-white ${
                 isDarkMode ? 'border-[#27272A]' : 'border-zinc-200'
               }`}
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-              href="mailto:karen.gomes12023@gmail.com"
-              className={`p-3 rounded-xl border transition-all hover:bg-[#7C3AED] hover:text-white ${
-                isDarkMode ? 'border-[#27272A]' : 'border-zinc-200'
-              }`}
+              aria-haspopup="dialog"
+              aria-label="Abrir opções de contato"
             >
               <Mail size={20} />
-            </a>
+            </button>
             <a
               href="https://github.com/KarenGomes"
               target="_blank"
@@ -62,6 +80,13 @@ export function Footer() {
           </p>
         </div>
       </div>
+
+      <ContactModal
+        open={contactOpen}
+        onClose={() => setContactOpen(false)}
+        onSubmitSuccess={(message) => setToastMessage(message)}
+      />
+      <Toast message={toastMessage} />
     </footer>
   )
 }

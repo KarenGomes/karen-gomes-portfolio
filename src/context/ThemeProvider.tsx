@@ -1,12 +1,5 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from 'react'
-
-type ThemeContextValue = {
-  isDarkMode: boolean
-  toggle: () => void
-  setDarkMode: (value: boolean) => void
-}
-
-export const ThemeContext = createContext<ThemeContextValue | null>(null)
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { ThemeContext } from './theme-context'
 
 const STORAGE_KEY = 'karen.dev.theme'
 
@@ -19,7 +12,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (stored === 'dark') setIsDarkMode(true)
       if (stored === 'light') setIsDarkMode(false)
     } catch {
-      // ignore
+      void 0
     }
   }, [])
 
@@ -27,7 +20,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       localStorage.setItem(STORAGE_KEY, isDarkMode ? 'dark' : 'light')
     } catch {
-      // ignore
+      void 0
     }
   }, [isDarkMode])
 
@@ -38,4 +31,3 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
-

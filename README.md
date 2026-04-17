@@ -1,49 +1,34 @@
 # Portfolio — React + TypeScript + Vite + Tailwind
 
-Aplicação de portfólio em React com arquitetura modular (`components/`, `hooks/`, `models/`, `services/`, `context/`) e consumo de API via `VITE_API_URL`.
+SPA de portfólio com dados dinâmicos via API, tema claro/escuro e formulário de contato (Web3Forms + hCaptcha).
 
 ## Requisitos
 
-- **Node.js**: 18.x (recomendado **>= 18.18**)  
+- **Node.js**: 18.x (recomendado **≥ 18.18**)
 - **npm**: 7+
 
-## Configuração de ambiente
+## Configuração rápida
 
-Crie um arquivo `.env` na raiz (já existe neste projeto) com:
-
-```env
-VITE_API_URL=https://exemplo.lambda-url.us-east-2.on.aws/
-```
+1. Copie `.env.example` para `.env` na raiz e preencha as variáveis (ver [documentação](./documentacao/README.md)).
+2. `npm install`
+3. `npm run dev`
 
 ## Comandos
 
-Instalar dependências:
+| Comando | Descrição |
+|---------|-----------|
+| `npm run dev` | Desenvolvimento com HMR |
+| `npm run build` | Typecheck + build de produção (`dist/`) |
+| `npm run preview` | Servir o build localmente |
+| `npm run lint` | ESLint |
 
-```bash
-npm install
-```
+## Documentação
 
-Rodar em modo desenvolvimento (HMR):
-
-```bash
-npm run dev
-```
-
-Gerar build de produção:
-
-```bash
-npm run build
-```
-
-Pré-visualizar o build:
-
-```bash
-npm run preview
-```
+- **[Guia completo do projeto (estrutura, ambiente, API, contato, deploy)](./documentacao/README.md)**
 
 ## Estrutura (resumo)
 
-- `src/services/portfolioApi.ts`: chamadas de API + mapeamento para modelos locais
-- `src/hooks/usePortfolioData.ts`: hook de dados (loading/error/data)
-- `src/context/ThemeContext.tsx`: tema dark/light
-- `src/components/*`: UI componentizada (Navbar, Hero, Projetos, Experiência, Footer)
+- `src/services/portfolioApi.ts` — chamadas à API e mapeamento para modelos
+- `src/hooks/usePortfolioData.ts` — estado dos dados do portfólio
+- `src/context/` — tema (`ThemeProvider` + `theme-context`)
+- `src/components/` — UI (Navbar, Hero, projetos, experiência, Footer, `ContactModal`, etc.)
