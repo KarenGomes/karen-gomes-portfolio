@@ -6,7 +6,7 @@ import karenIcon from '../assets/images/karen-icon.png'
 import cvPdf from '../assets/docs/Karen Gomes - Analista e Desenvolvedora De Sistemas.pdf'
 
 const FULL_TEXT =
-  'Sou desenvolvedora Full Stack Júnior e UI/UX designer. Especialista em Angular, React e integração de IA Generativa em produtos digitais.'
+  'Sou desenvolvedora Full Stack Júnior e UI/UX designer. Especialista em Angular, Flutter, React e integração de IA Generativa em produtos digitais.'
 
 export function Hero() {
   const { isDarkMode } = useTheme()
