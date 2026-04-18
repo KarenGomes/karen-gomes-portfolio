@@ -2,6 +2,8 @@
 
 SPA de portfólio com dados dinâmicos via API, tema claro/escuro e formulário de contato (Web3Forms + hCaptcha).
 
+**Site em produção:** [https://karengomes.vercel.app/](https://karengomes.vercel.app/)
+
 ## Requisitos
 
 - **Node.js**: 18.x (recomendado **≥ 18.18**)
